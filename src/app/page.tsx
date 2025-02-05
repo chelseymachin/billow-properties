@@ -2,8 +2,9 @@ import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import Map from "./components/Map";
 import Card from "./components/Card";
+import { Property } from "../types";
 
-const getProperties = async () => {
+const getProperties = async (): Promise<Property[]> => {
   const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT
   if (!HYGRAPH_ENDPOINT) {
     throw new Error("Hygraph endpoint not set in environment")
@@ -12,7 +13,8 @@ const getProperties = async () => {
   const response = await fetch(HYGRAPH_ENDPOINT, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "gcms-stage": "PUBLISHED"
     },
     body: JSON.stringify({
       query: `
@@ -48,7 +50,7 @@ const getProperties = async () => {
 
 const Home= async () => {
   const propertiesList = await getProperties()
-  console.log(propertiesList)
+  
   return (
     <div>
       <NavBar />
@@ -60,7 +62,15 @@ const Home= async () => {
         <article className="listings">
           <h2 className="text-3xl font-bold">Rental Listings</h2>
           <div className="card-container">
-            <Card/>
+            {propertiesList.map((property: Property) => <Card
+              key={property.id}
+              propertyName={property.name}
+              slug={property.slug}
+              pricePerNight={property.pricePerNight}
+              bedrooms={property.bedrooms}
+              bathrooms={property.bathrooms}
+              image={property.listingPhotos[0]}
+            />)}
           </div>
         </article>
       </main>
