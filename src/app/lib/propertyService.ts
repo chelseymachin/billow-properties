@@ -45,7 +45,7 @@ export interface SingleProperty {
       throw new Error("Hygraph endpoint not set in environment")
     }
   
-    const response = await fetch(HYGRAPH_ENDPOINT, {
+    const response = await fetch(NEXT_HYGRAPH_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export interface SingleProperty {
       throw new Error("getProperty should not be called on the client!");
     }
   
-    const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT;
+    const HYGRAPH_ENDPOINT = process.env.NEXT_HYGRAPH_ENDPOINT;
     if (!HYGRAPH_ENDPOINT) {
       throw new Error("Hygraph endpoint not set in environment");
     }
