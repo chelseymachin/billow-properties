@@ -36,6 +36,10 @@ export interface SingleProperty {
 }  
 
   export const getProperties = async (): Promise<ListProperty[]> => {
+    if (typeof window !== "undefined") {
+      throw new Error("getProperty should not be called on the client!");
+    }
+  
     const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT
     if (!HYGRAPH_ENDPOINT) {
       throw new Error("Hygraph endpoint not set in environment")
@@ -75,11 +79,16 @@ export interface SingleProperty {
         `
       })
     })
+  
     const json = await response.json()
     return json.data.properties
   }
   
   export const getProperty = async (slug: string): Promise<SingleProperty | null> => {
+    if (typeof window !== "undefined") {
+      throw new Error("getProperty should not be called on the client!");
+    }
+  
     const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT;
     if (!HYGRAPH_ENDPOINT) {
       throw new Error("Hygraph endpoint not set in environment");
