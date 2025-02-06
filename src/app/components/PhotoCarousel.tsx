@@ -6,7 +6,13 @@ import dynamic from "next/dynamic";
 import ImageCard from "./ImageCard";
 import { PhotoData } from "../lib/propertyService";
 
-const Slider = dynamic(() => import("react-slick"), { ssr: false });
+const LoadingSpinner = () => <div className="carousel-loading">Loading...</div>;
+
+const Slider = dynamic(() => import("react-slick"), { 
+    ssr: false, 
+    loading: () => <LoadingSpinner /> 
+});
+
 
 interface PhotoCarouselProps {
   photos: { url: string; fileName: string }[];
@@ -14,6 +20,10 @@ interface PhotoCarouselProps {
 
 const PhotoCarousel = ({ photos }: PhotoCarouselProps) => {
 
+    if (!photos || photos.length === 0) {
+        return <div className="no-photos">No photos available</div>;
+      }
+    
     const settings = {
         dots: true,
         infinite: true,
