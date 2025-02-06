@@ -77,6 +77,11 @@ nav {
 
     &:hover {
       background-color: var(--rosyBrown);
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
   } 
 }
@@ -114,10 +119,15 @@ article.listings {
 
     &:hover {
       background-color: var(--rosyBrown);
+      transform: scale(1.02);
 
       h3, p {
         color: var(--pastelPeach);
       }
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
 
     .text-container {
@@ -128,5 +138,105 @@ article.listings {
       margin: 1px;
       padding: 1px;
     }
+  }
+}
+
+.property-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: var(--softPink);
+  min-height: 100vh;
+
+  .property-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px;
+
+    .left-container {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      .stats-container {
+        margin-top: 20px;
+
+        h1 {
+          font-size: 2rem;
+          font-weight: bold;
+          color: var(--darkRosyBrown);
+          margin-bottom: 10px;
+        }
+  
+        p {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+      }
+
+      .features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+
+        .feature {
+          background-color: var(--rosyBrown);
+          color: var(--pastelPeach);
+          padding: 8px 12px;
+          border-radius: 5px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          box-shadow: rgba(87, 69, 74, 0.4) 0 2px 4px;
+        }
+      }
+    }
+
+    .property-info {
+      flex: 1.5;
+      background-color: var(--pastelPeach);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: rgba(87, 69, 74, 0.6) 0 3px 6px;
+      overflow-y: scroll;
+      max-height: 600px;
+    }
+  }
+}
+
+.back-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.back-button {
+  background-color: var(--darkRose);
+  color: var(--darkRosyBrown);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: rgba(87, 69, 74, 0.4) 0 2px 4px;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background-color: var(--rosyBrown);
+    color: var(--pastelPeach);
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }

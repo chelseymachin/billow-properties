@@ -1,4 +1,4 @@
-export interface PropertyData {
+export interface SingleProperty {
     bedrooms: number;
     bathrooms: number;
     description: string;
@@ -11,9 +11,75 @@ export interface PropertyData {
     pool: boolean;
     pricePerNight: number;
     slug: string;
+    listingPhotos: PhotoData[];
+  }
+
+  export interface PhotoData {
+    fileName: string
+    url: string
+  }
+
+  export interface ListProperty {
+    id: string;
+    name: string;
+    slug: string;
+    pricePerNight: number;
+    bedrooms: number;
+    bathrooms: number;
+    hotTub?: boolean;
+    inUnitLaundry?: boolean;
+    listingPhotos: { fileName: string; url: string }[];
+    location: { latitude: number; longitude: number };
+    offStreetParking?: boolean;
+    petFriendly?: boolean;
+    pool?: boolean;
+}  
+
+  export const getProperties = async (): Promise<ListProperty[]> => {
+    const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT
+    if (!HYGRAPH_ENDPOINT) {
+      throw new Error("Hygraph endpoint not set in environment")
+    }
+  
+    const response = await fetch(HYGRAPH_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "gcms-stage": "PUBLISHED"
+      },
+      body: JSON.stringify({
+        query: `
+          query PropertiesMainSearch {
+            properties {
+              bedrooms
+              bathrooms
+              hotTub
+              inUnitLaundry
+              listingPhotos {
+                fileName
+                url
+              }
+              location {
+                latitude
+                longitude
+              }
+              name
+              offStreetParking
+              petFriendly
+              pool
+              pricePerNight
+              slug
+              id
+            }
+          }
+        `
+      })
+    })
+    const json = await response.json()
+    return json.data.properties
   }
   
-  export const getProperty = async (slug: string): Promise<PropertyData | null> => {
+  export const getProperty = async (slug: string): Promise<SingleProperty | null> => {
     const HYGRAPH_ENDPOINT = process.env.HYGRAPH_ENDPOINT;
     if (!HYGRAPH_ENDPOINT) {
       throw new Error("Hygraph endpoint not set in environment");
@@ -40,7 +106,11 @@ export interface PropertyData {
               petFriendly
               pool
               pricePerNight
-              slug
+              slug,
+              listingPhotos {
+                fileName
+                url
+              }
             }
           }
         `,
