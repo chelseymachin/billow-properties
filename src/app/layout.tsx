@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Billow Properties",
   description: "Just a lil' cute thing",
-};
+}
 
 const RootLayout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) => {
   return (
     <html lang="en">
@@ -17,7 +17,7 @@ const RootLayout = ({
         {children}
       </body>
     </html>
-  );
+  )
 }
 
-export default RootLayout;
+export default RootLayout

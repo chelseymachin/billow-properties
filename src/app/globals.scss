@@ -47,38 +47,38 @@ nav {
   justify-content: flex-start;
   align-items: center;
   border: var(--darkRosyBrown) 1px solid;
-}
 
-.search-bar input {
-  margin-left: 20px;
-  border: var(--darkRosyBrown) solid 1px;
-  border-radius: 5px;
-  width: 400px;
-  padding: 4px;
-  margin: 10px 5px;
-}
+  input {
+    margin-left: 20px;
+    border: var(--darkRosyBrown) solid 1px;
+    border-radius: 5px;
+    width: 400px;
+    padding: 4px;
+    margin: 10px 5px;
 
-.search-bar input:focus {
-  outline: solid var(--rosyBrown) 2px;
-}
+    &:focus {
+      outline: solid var(--rosyBrown) 2px;
+    }
 
-.search-bar input::selection {
-  background-color: var(--darkRosyBrown);
-  color: var(--pastelPeach);
-}
+    &::selection {
+      background-color: var(--darkRosyBrown);
+      color: var(--pastelPeach);
+    }
+  }
 
-.search-bar button {
-  background-color: var(--darkRosyBrown);
-  color: var(--pastelPeach);
-  padding: 4px 10px;
-  border-radius: 5px;
-  border: none;
-  font-weight: 700;
-  margin: 10px 5px;
-}
+  button {
+    background-color: var(--darkRosyBrown);
+    color: var(--pastelPeach);
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 700;
+    margin: 10px 5px;
 
-.search-bar button:hover {
-  background-color: var(--rosyBrown);
+    &:hover {
+      background-color: var(--rosyBrown);
+    }
+  } 
 }
 
 main {
@@ -102,4 +102,31 @@ article.listings {
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: scroll;
+
+  .card {
+    background-color: var(--darkRose);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(87, 69, 74, 0.6) 0 3px 6px;
+    width: 300px;
+    height: 235px;
+    margin: 15px;
+
+    &:hover {
+      background-color: var(--rosyBrown);
+
+      h3, p {
+        color: var(--pastelPeach);
+      }
+    }
+
+    .text-container {
+      padding: 5px;
+    }
+
+    h3, p {
+      margin: 1px;
+      padding: 1px;
+    }
+  }
 }
