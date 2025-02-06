@@ -23,9 +23,10 @@ const PhotoCarousel = ({ photos }: PhotoCarouselProps) => {
   return (
     <Slider {...settings}>
         {photos.map((photo: PhotoData) => 
-            <div>
+            <div
+                key={photo.fileName}
+            >
                 <ImageCard
-                    key={photo.fileName}
                     url={photo.url}
                     fileName={photo.fileName}
                     width={600}
