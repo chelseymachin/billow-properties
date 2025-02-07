@@ -170,6 +170,8 @@ article.listings {
   padding: 10px;
   background-color: var(--softPink);
   min-height: 100vh;
+  overflow-y: auto;
+  max-height: 100vh;
 
   @media (min-width: 480px) {
     padding: 20px;
@@ -178,11 +180,12 @@ article.listings {
   .property-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     max-width: 1200px;
     width: 100%;
     gap: 15px;
+    padding-bottom: 20px;
 
     @media (min-width: 480px) {
       gap: 20px;
