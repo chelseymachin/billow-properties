@@ -1,4 +1,4 @@
-import PropertyDetails from "@/app/components/PropertyDetails";
+import PropertyDetails from "@/components/PropertyDetails";
 import Link from "next/link";
 
 interface Params {
@@ -10,9 +10,9 @@ interface Params {
   const Property = async (props: Params) => {
     const params = await props.params;
     return (
-      <div className="property-page">
-        <div className="back-button-container">
-          <Link href="/" className="back-button">
+      <div>
+        <div>
+          <Link href="/">
             ← Back to Listings
           </Link>
         </div>

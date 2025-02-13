@@ -3,8 +3,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import dynamic from "next/dynamic";
-import ImageCard from "./ImageCard";
-import { PhotoData } from "../lib/propertyService";
+import { PhotoData } from "../app/lib/propertyService";
+import Image from "next/image";
 
 const LoadingSpinner = () => <div className="carousel-loading">Loading...</div>;
 
@@ -38,9 +38,9 @@ const PhotoCarousel = ({ photos }: PhotoCarouselProps) => {
             <div
                 key={photo.fileName}
             >
-                <ImageCard
-                    url={photo.url}
-                    fileName={photo.fileName}
+                <Image
+                    src={photo.url}
+                    alt={photo.fileName}
                     width={600}
                     height={400}
                 />

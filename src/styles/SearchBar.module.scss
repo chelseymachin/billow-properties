@@ -1,0 +1,31 @@
+.searchBar {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border: var(--darkRosyBrown) 1px solid;
+
+    input {
+        min-width: 400px;
+        margin-right: .5rem;
+        border: var(--darkRosyBrown) solid 1px;
+        border-radius: 5px;
+        padding: 6px;
+
+        @media (max-width: 700px) {
+            min-width: 250px;
+            margin-right: 6px;
+        }
+
+        &:focus {
+            outline: solid var(--rosyBrown) 2px;
+        }
+
+        &::selection {
+            background-color: var(--darkRosyBrown);
+            color: var(--pastelPeach);
+        }
+    }
+}

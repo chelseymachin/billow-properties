@@ -1,0 +1,39 @@
+.card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    width: 300px;
+    height: 260px;
+    margin: 1rem;
+    border: none;
+    background-color: var(--darkRose);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+        background-color: var(--rosyBrown);
+
+        h3 {
+            color: var(--pastelPeach);
+        }
+    }
+
+    .image {
+        border-radius: 10px 10px 0 0;
+        width: 300px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    @media (max-width: 700px) {
+        margin: .5rem;
+    }
+}
+
+.textContainer {
+    padding: 6px;
+
+    h3 {
+        margin: 6px;
+        padding: 1px;
+    }
+}
