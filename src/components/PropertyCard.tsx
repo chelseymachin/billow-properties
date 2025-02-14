@@ -2,11 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
     Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle
+    CardContent
 } from '@/components/ui/card'
 import styles from '@/styles/PropertyCard.module.scss'
 
@@ -25,7 +21,6 @@ interface CardProps {
 }
 
 const PropertyCard: React.FC<CardProps> = ({ 
-    propertyName, 
     slug, 
     pricePerNight, 
     bedrooms, 
